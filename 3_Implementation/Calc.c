@@ -11,8 +11,6 @@
 
 int main(void){
 
-    int i, j, k; //used in for loops
-
     int matrixA[10][10]; // initialized at 10 just to have it initialized
     int matrixB[10][10];
     int rowA, colA;
