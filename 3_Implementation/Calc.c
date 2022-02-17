@@ -1,3 +1,8 @@
+/*******************************************************************************
+*   Author: Rahul Adhikari                                                      *
+*   Description: A simple matrix class capable of scalar multiplication,        *
+*                matrix addition, matrix multiplication                         *
+*******************************************************************************/
 #define _CRT_SECURE_NO_WARNINGS
 #include "stdio.h"
 #include "Calc.h"
@@ -264,3 +269,6 @@ void Multiply(int arrayone[10][10], int arraytwo[10][10], int rowsA, int columsA
                 printf("\n\n");
         }
 }
+/*******************************************************************************
+*                                 THE END                                      *
+*******************************************************************************/
