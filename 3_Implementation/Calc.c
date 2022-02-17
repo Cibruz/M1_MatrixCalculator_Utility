@@ -1,13 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
+#include "stdio.h"
+#include "Calc.h"
+#include "ctype.h"
 
-
-//User Defined Function Declaration
-void readMatrix(int array[10][10], int rows, int colums);
-void printMatrix(int array[10][10], int rows, int colums);
-void matrixAddSub(int arrayone[10][10], int arraytwo[10][10], int rows, int colums, int mul);
-void matrixScalarMultiply(int array[10][10], int scalar, int rows, int colums);
-void matrixMultiply(int arrayone[10][10], int arraytwo[10][10], int rowsA, int columsA, int columsB);
 
 int main(void){
 
@@ -28,10 +23,11 @@ int main(void){
 
         //this is the operation menu just type A, B, C or D to calculate
         printf("\nOperation Menu\n");
-        printf("\t1. to Add\n");
-        printf("\t2. to Subtract\n");
-        printf("\t3. to Scalar Multiply\n");
-        printf("\t4. to Multiply two matrices\n");
+        printf("\t1. Add\n");
+        printf("\t2. Subtract\n");
+        printf("\t3. Scalar Multiply\n");
+        printf("\t4. Multiply two matrices\n");
+        printf("\t5. Exit\n");
         printf("Enter yout choice: ");
         scanf(" %d", &operation);
 
@@ -57,19 +53,19 @@ int main(void){
 
 
             printf("\n\tEnter elements of Matrix A a %d x %d matrix.\n", rowA, colA); // with the %d we remember the user the dimentions of the array
-            readMatrix(matrixA, rowA, colA);
+            read(matrixA, rowA, colA);
             printf("\n\t\tMatrix A\n\n");
-            printMatrix(matrixA, rowA, colA);
+            print(matrixA, rowA, colA);
 
 
             printf("\n\tEnter elements of Matrix B a %d x %d matrix.\n", rowB, colB); // with the %d we remember the user the dimentions of the array
-            readMatrix(matrixB, rowB, colB);
+            read(matrixB, rowB, colB);
             printf("\n\t\tMatrix B\n\n");
-            printMatrix(matrixB, rowB, colB);
+            print(matrixB, rowB, colB);
 
 
             printf("\nThe Sum of matrixA + matrixB is : \n");
-            matrixAddSub(matrixA, matrixB, rowA, colA, add);
+            AddSub(matrixA, matrixB, rowA, colA, add);
 
             break;
 
@@ -91,17 +87,17 @@ int main(void){
             }
 
             printf("\n\tEnter elements of Matrix A a %d x %d matrix.\n", rowA, colA); // with the %d we remember the user the dimentions of the array
-            readMatrix(matrixA, rowA, colA);
-            printf("\n\t\tMatrix A\n\n");
-            printMatrix(matrixA, rowA, colA);
+            read(matrixA, rowA, colA);
+            printf("\n\tMatrix A\n");
+            print(matrixA, rowA, colA);
 
             printf("\n\tEnter elements of Matrix B a %d x %d matrix.\n", rowB, colB); // with the %d we remember the user the dimentions of the array
-            readMatrix(matrixB, rowB, colB);
-            printf("\n\t\tMatrix B\n\n");
-            printMatrix(matrixB, rowB, colB);
+            read(matrixB, rowB, colB);
+            printf("\n\tMatrix B\n");
+            print(matrixB, rowB, colB);
 
             printf("\nThe difference between matrixA - matrixB is : \n");
-            matrixAddSub(matrixA, matrixB, rowA, colA, sub);
+            AddSub(matrixA, matrixB, rowA, colA, sub);
             break;
 
         case 3:
@@ -115,12 +111,12 @@ int main(void){
             scanf("%d%d", &rowA, &colA);
 
             printf("\n\tEnter elements of Matrix A a %d x %d matrix.\n", rowA, colA); // with the %d we remember the user the dimentions of the array
-            readMatrix(matrixA, rowA, colA);
+            read(matrixA, rowA, colA);
             printf("\n\t\tMatrix A\n\n");
-            printMatrix(matrixA, rowA, colA);
+            print(matrixA, rowA, colA);
 
             printf("\nThe scalar multiplication between matrixA * %d is: \n", scalar);
-            matrixScalarMultiply(matrixA, scalar, rowA, colA);
+            ScalarMultiply(matrixA, scalar, rowA, colA);
 
             break;
 
@@ -145,21 +141,23 @@ int main(void){
 
             // Storing elements of first matrix.
             printf("\n\tEnter elements of Matrix A a %d x %d matrix.\n", rowA, colA); // with the %d we remember the user the dimentions of the array
-            readMatrix(matrixA, rowA, colA);
+            read(matrixA, rowA, colA);
             printf("\n\t\tMatrix A\n\n");
-            printMatrix(matrixA, rowA, colA);
+            print(matrixA, rowA, colA);
 
             // Storing elements of second matrix.
             printf("\n\tEnter elements of Matrix B a %d x %d matrix.\n", rowB, colB); // with the %d we remember the user the dimentions of the array
-            readMatrix(matrixB, rowB, colB);
+            read(matrixB, rowB, colB);
             printf("\n\t\tMatrix A\n\n");
-            printMatrix(matrixB, rowB, colB);
+            print(matrixB, rowB, colB);
 
             //multiplyng arrays
-            matrixMultiply(matrixA, matrixB, rowA, colA, colB);
+            Multiply(matrixA, matrixB, rowA, colA, colB);
 
             break;
 
+        case 5:
+            break;
         default:
             printf("\nIncorrect option! Please choose a number 1-4.");
             break;
@@ -176,7 +174,8 @@ int main(void){
 
 
 //User Defined Function Definition
-void readMatrix(int array[10][10], int rows, int colums){
+void read(int array[10][10], int rows, int colums)
+{
     int i, j;
     for (i = 0; i < rows; i++){
         printf("\t%d entries for row %d: ", colums, i + 1);
@@ -188,7 +187,8 @@ void readMatrix(int array[10][10], int rows, int colums){
     return;
 }
 
-void printMatrix(int array[10][10], int rows, int colums){
+void print(int array[10][10], int rows, int colums)
+{
     int i, j;
 
     for (i = 0; i < rows; i++) {
@@ -200,7 +200,8 @@ void printMatrix(int array[10][10], int rows, int colums){
 }
 
 
-void matrixAddSub(int arrayone[10][10], int arraytwo[10][10], int rows, int colums, int mul){
+void AddSub(int arrayone[10][10], int arraytwo[10][10], int rows, int colums, int mul)
+{
     int i, j;
     int sumM[10][10];
     int scaM[10][10];
@@ -221,7 +222,7 @@ void matrixAddSub(int arrayone[10][10], int arraytwo[10][10], int rows, int colu
 }
 
 
-void matrixScalarMultiply(int array[10][10], int scalar, int rows, int colums){
+void ScalarMultiply(int array[10][10], int scalar, int rows, int colums){
     int i, j;
     int scaM[10][10];
     for (i = 0; i < rows; i++){
@@ -234,7 +235,7 @@ void matrixScalarMultiply(int array[10][10], int scalar, int rows, int colums){
 
 }
 
-void matrixMultiply(int arrayone[10][10], int arraytwo[10][10], int rowsA, int columsA,int columsB)
+void Multiply(int arrayone[10][10], int arraytwo[10][10], int rowsA, int columsA,int columsB)
 {
     int i, j, k;
     int mulM[10][10];
