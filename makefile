@@ -3,10 +3,10 @@ SRC = main.c
 
 
 build:
-	gcc 3_Implementation/$(SRC) -o $(call FixPath,$(PROJ_NAME).$(EXEC)) -lm
+	gcc 3_Implementation/main.c
 
 run: build
-	./$(call FixPath,$(PROJ_NAME).$(EXEC))
+	./a.out
 
 clean:
-	$(RM) $(call FixPath,$(PROJ_NAME).$(EXEC))
+	rm ./a.out
