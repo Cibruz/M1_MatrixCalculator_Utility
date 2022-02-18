@@ -2,12 +2,11 @@ PROJ_NAME = Matrix_Calculator
 SRC = Calc.c 
 
 
-
 build:
-	gcc 3_Implementation/Calc.c
+	gcc $(SRC) -o $(call FixPath,$(PROJ_NAME).$(EXEC)) -lm
 
 run: build
-	./a.out
+	./$(call FixPath,$(PROJ_NAME).$(EXEC))
 
 clean:
-	rm ./a.out
+	$(RM) $(call FixPath,$(PROJ_NAME).$(EXEC))
