@@ -3,7 +3,7 @@ SRC = main.c main.h
 
 
 build:
-	gcc $(SRC) -o $(call FixPath,$(PROJ_NAME).$(EXEC)) -lm
+	gcc ./3_implementation/$(SRC) -o $(call FixPath,$(PROJ_NAME).$(EXEC)) -lm
 
 run: build
 	./$(call FixPath,$(PROJ_NAME).$(EXEC))
