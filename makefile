@@ -1,5 +1,5 @@
 PROJ_NAME = Matrix_Calculator
-SRC = Calc.c 
+SRC = main.c main.h
 
 
 build:
