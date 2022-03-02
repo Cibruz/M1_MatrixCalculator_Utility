@@ -1,1 +1,1 @@
-# @mainpage Calculator Application by Bharath G @subpage calculator_operations.h
+# @mainpage Matrix_Calculator Application by Rahul Adhikari @subpage calc_operations.h
