@@ -1,5 +1,5 @@
 # M1_MatrixCalculator_Utility
-addition , subtraction multiplication and inerse
+addition , subtraction multiplication and inverse
 
 
 # Codiga Badges
